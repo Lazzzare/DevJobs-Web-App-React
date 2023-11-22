@@ -11,7 +11,7 @@ const App = () => {
       } duration-1000 transition-all`}
     >
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-      <Input />
+      <Input darkMode={darkMode} setDarkMode={setDarkMode} />
     </div>
   );
 };
