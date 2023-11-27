@@ -76,7 +76,7 @@ const Input = ({ darkMode }: Props) => {
                         <path
                           d="M1 6.56948L4.57248 10.142L13.7144 1"
                           stroke="white"
-                          stroke-width="2"
+                          strokeWidth="2"
                         />
                       </svg>
                     ) : null}
@@ -141,7 +141,7 @@ const Input = ({ darkMode }: Props) => {
                           <path
                             d="M1 6.56948L4.57248 10.142L13.7144 1"
                             stroke="white"
-                            stroke-width="2"
+                            strokeWidth="2"
                           />
                         </svg>
                       ) : null}
