@@ -33,7 +33,7 @@ const App = () => {
     >
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
       <Input darkMode={darkMode} setDarkMode={setDarkMode} />
-      <Jobs data={data} />
+      <Jobs data={data} darkMode={darkMode} />
     </div>
   );
 };
