@@ -24,6 +24,7 @@ const App = () => {
     fetchData();
   }, []);
 
+  console.log(data);
   return (
     <div
       className={`w-full min-h-screen ${
