@@ -7,12 +7,12 @@ interface Props {
 
 const Jobs = ({ data, darkMode }: Props) => {
   return (
-    <div className="px-6 mt-14 flex flex-col space-y-11">
+    <div className="mt-14 mx-auto grid-flow-row max-w-[327px] md:max-w-[689px] lg:max-w-[1110px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
       {data.map((job) => {
         return (
           <div
             key={job.id}
-            className={`relative pt-12 pb-9 px-8 ${
+            className={`relative pt-12 pb-9 px-8 max-w-[327px] md:max-w-[339px] lg:max-w-[350px] mb-10 ${
               darkMode ? "bg-VeryDarkBlue" : "bg-white"
             } duration-1000 transition-all`}
           >
