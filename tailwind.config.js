@@ -12,6 +12,7 @@ export default {
         LightGrey: "#F4F6F8",
         Gray: "#9DAEC2",
         DarkGrey: "#6E8098",
+        Blue: "#5964E0",
       },
       backgroundImage: {
         MobileHeader: "url('/src/assets/mobile/bg-pattern-header.svg')",
