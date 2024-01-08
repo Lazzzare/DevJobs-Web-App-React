@@ -10,7 +10,7 @@ const Jobs = ({ data }: Props) => {
       <div>
         {data.map((job) => {
           return (
-            <div>
+            <div key={job.id}>
               <img src={job.logo} alt={`${job.company} Logo`} />
             </div>
           );
