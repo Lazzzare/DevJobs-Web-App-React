@@ -1,2 +1,2 @@
-# React + TypeScript + Vite
+Devjobs-Web-App with react/ts/tailwind
 
