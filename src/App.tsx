@@ -11,6 +11,7 @@ const App = () => {
   const [darkMode, setDarkMode] = useState<boolean>(false);
   const [data, setData] = useState<(typeof dataType)[]>([]);
   const [search, setSearch] = useState<string>("");
+  // const [location, setLocation] = useState<string>("");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -31,15 +32,9 @@ const App = () => {
       return item.position.toLowerCase().includes(search.toLowerCase());
     });
 
-    if (results.length === 0) {
-      console.log("No jobs");
-    }
-
     console.log(results);
     return results;
   };
-
-  searchJob();
 
   return (
     <div
@@ -54,8 +49,12 @@ const App = () => {
         search={search}
         setSearch={setSearch}
         data={data}
+        searchJob={searchJob}
+        // locationSearch={locationSearch}
+        // location={location}
+        // setLocation={setLocation}
       />
-      <Jobs data={search.length > 0 ? searchJob() : data} darkMode={darkMode} />
+      <Jobs data={data} darkMode={darkMode} />
     </div>
   );
 };
