@@ -4,6 +4,8 @@ import Input from "./components/Input";
 import axios from "axios";
 import dataType from "./components/dataTypes";
 import Jobs from "./components/Jobs";
+import { Route, Routes } from "react-router-dom";
+import SingleJobs from "./components/SingleJobs";
 
 const baseUrl = "./../data/data.json";
 
@@ -12,7 +14,7 @@ const App = () => {
   const [data, setData] = useState<(typeof dataType)[]>([]);
   const [search, setSearch] = useState<string>("");
   const [location, setLocation] = useState<string>("");
-  const [fullTimeCheck, setFullTimeCheck] = useState<string>("Full Time");
+  // const [fullTimeCheck, setFullTimeCheck] = useState<string>("Full Time");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -54,18 +56,29 @@ const App = () => {
       } duration-1000 transition-all`}
     >
       <Header darkMode={darkMode} setDarkMode={setDarkMode} />
-      <Input
-        darkMode={darkMode}
-        setDarkMode={setDarkMode}
-        search={search}
-        setSearch={setSearch}
-        data={data}
-        searchJob={searchJob}
-        locationSearch={locationSearch}
-        location={location}
-        setLocation={setLocation}
-      />
-      <Jobs data={data} darkMode={darkMode} />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Input
+                darkMode={darkMode}
+                setDarkMode={setDarkMode}
+                search={search}
+                setSearch={setSearch}
+                data={data}
+                searchJob={searchJob}
+                locationSearch={locationSearch}
+                location={location}
+                setLocation={setLocation}
+              />
+              <Jobs data={data} darkMode={darkMode} />
+            </>
+          }
+        />
+        <Route path="/:id" element={<SingleJobs data={data} />} />
+        {/* <Route path="/*" element={<Navigate to="/" replace />} /> */}
+      </Routes>
     </div>
   );
 };
