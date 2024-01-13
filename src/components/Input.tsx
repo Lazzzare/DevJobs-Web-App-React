@@ -7,8 +7,8 @@ import { motion } from "framer-motion";
 import dataType from "./dataTypes";
 
 interface Props {
-  setDarkMode: (e: boolean) => void;
   darkMode: boolean;
+  setDarkMode: (e: boolean) => void;
   search: string;
   setSearch: (e: string) => void;
   data: (typeof dataType)[];
