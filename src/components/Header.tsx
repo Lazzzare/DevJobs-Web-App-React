@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import Logo from "../assets/mobile/Logo.svg";
+import { Link } from "react-router-dom";
 
 interface Props {
   setDarkMode: (e: boolean) => void;
@@ -10,15 +11,17 @@ const Header = ({ setDarkMode, darkMode }: Props) => {
   return (
     <div
       className="bg-MobileHeader w-full h-[136px] bg-cover bg-no-repeat rounded-none md:rounded-bl-[100px] px-6 py-8
-        md:py-11 md:px-10  "
+        md:py-11 md:px-10 z-10"
     >
-      <div className=" flex justify-between items-center lg:max-w-[1110px] lg:mx-auto">
+      <div className=" flex justify-between items-center lg:max-w-[1110px] lg:mx-auto z-10">
         <motion.div
           initial={{ opacity: 0, x: -300 }}
           animate={{ opacity: 3, x: 0 }}
           transition={{ duration: 1.5 }}
         >
-          <img src={Logo} alt="Logo" />
+          <Link to="/">
+            <img src={Logo} alt="Logo" />
+          </Link>
         </motion.div>
         <motion.div
           initial={{ opacity: 0, x: 300 }}
