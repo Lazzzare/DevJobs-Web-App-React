@@ -4,15 +4,20 @@ import DesktopSearchIcon from "../assets/mobile/DesktopSearch.svg";
 import LocationIcon from "../assets/mobile/Location.svg";
 import { useState } from "react";
 import { motion } from "framer-motion";
+import dataType from "./dataTypes";
 
 interface Props {
   setDarkMode: (e: boolean) => void;
   darkMode: boolean;
+  search: string;
+  setSearch: (e: string) => void;
+  data: (typeof dataType)[];
 }
 
-const Input = ({ darkMode }: Props) => {
+const Input = ({ darkMode, search, setSearch }: Props) => {
   const [fullTimeCheck, setFullTimeCheck] = useState<boolean>(false);
   const [popUp, setPopUp] = useState<boolean>(false);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -100 }}
@@ -32,6 +37,8 @@ const Input = ({ darkMode }: Props) => {
               className="hidden md:flex"
             />
             <input
+              value={search}
+              onChange={(e) => setSearch(e.target.value)}
               type="text"
               placeholder="Filter by title…"
               className={`flex pl-6 md:pl-4 py-4  focus:outline-none rounded ${
