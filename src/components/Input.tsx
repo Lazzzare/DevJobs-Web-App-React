@@ -13,9 +13,9 @@ interface Props {
   setSearch: (e: string) => void;
   data: (typeof dataType)[];
   searchJob: (e: string) => void;
-  // locationSearch: (e: string) => void;
-  // location: string;
-  // setLocation: (e: string) => void;
+  locationSearch: (e: string) => void;
+  location: string;
+  setLocation: (e: string) => void;
 }
 
 const Input = ({
@@ -23,10 +23,10 @@ const Input = ({
   search,
   setSearch,
   searchJob,
-}: // location,
-// setLocation,
-// locationSearch,
-Props) => {
+  location,
+  setLocation,
+  locationSearch,
+}: Props) => {
   const [fullTimeCheck, setFullTimeCheck] = useState<boolean>(false);
   const [popUp, setPopUp] = useState<boolean>(false);
 
@@ -63,8 +63,8 @@ Props) => {
               <div className="pl-6 flex flex-row">
                 <img src={LocationIcon} alt="LocationIcon" />
                 <input
-                  // value={location}
-                  // onChange={(e) => setLocation(e.target.value)}
+                  value={location}
+                  onChange={(e) => setLocation(e.target.value)}
                   type="text"
                   placeholder="Filter by location…"
                   className={`flex pl-6 md:pl-4 py-4  focus:outline-none rounded ${
@@ -111,7 +111,9 @@ Props) => {
                   </h3>
                 </div>
                 <button
-                  onClick={() => searchJob(search)}
+                  onClick={() => {
+                    locationSearch(location), searchJob(search);
+                  }}
                   className="py-3 px-[14px] bg-[#5964E0] ml-5 rounded-md text-white"
                 >
                   Search
