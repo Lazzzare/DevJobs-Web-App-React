@@ -12,6 +12,7 @@ const App = () => {
   const [data, setData] = useState<(typeof dataType)[]>([]);
   const [search, setSearch] = useState<string>("");
   const [location, setLocation] = useState<string>("");
+  const [fullTimeCheck, setFullTimeCheck] = useState<string>("Full Time");
 
   useEffect(() => {
     const fetchData = async () => {
@@ -36,6 +37,7 @@ const App = () => {
     return results;
   };
 
+  // SearchWithLocation
   const locationSearch = () => {
     const locationResults = data.filter((item) => {
       return item.location.toLowerCase().includes(location.toLowerCase());
