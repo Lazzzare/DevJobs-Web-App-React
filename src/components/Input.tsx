@@ -12,9 +12,21 @@ interface Props {
   search: string;
   setSearch: (e: string) => void;
   data: (typeof dataType)[];
+  searchJob: (e: string) => void;
+  // locationSearch: (e: string) => void;
+  // location: string;
+  // setLocation: (e: string) => void;
 }
 
-const Input = ({ darkMode, search, setSearch }: Props) => {
+const Input = ({
+  darkMode,
+  search,
+  setSearch,
+  searchJob,
+}: // location,
+// setLocation,
+// locationSearch,
+Props) => {
   const [fullTimeCheck, setFullTimeCheck] = useState<boolean>(false);
   const [popUp, setPopUp] = useState<boolean>(false);
 
@@ -51,6 +63,8 @@ const Input = ({ darkMode, search, setSearch }: Props) => {
               <div className="pl-6 flex flex-row">
                 <img src={LocationIcon} alt="LocationIcon" />
                 <input
+                  // value={location}
+                  // onChange={(e) => setLocation(e.target.value)}
                   type="text"
                   placeholder="Filter by location…"
                   className={`flex pl-6 md:pl-4 py-4  focus:outline-none rounded ${
@@ -96,7 +110,10 @@ const Input = ({ darkMode, search, setSearch }: Props) => {
                     Full Time
                   </h3>
                 </div>
-                <button className="py-3 px-[14px] bg-[#5964E0] ml-5 rounded-md text-white">
+                <button
+                  onClick={() => searchJob(search)}
+                  className="py-3 px-[14px] bg-[#5964E0] ml-5 rounded-md text-white"
+                >
                   Search
                 </button>
               </div>
@@ -155,9 +172,11 @@ const Input = ({ darkMode, search, setSearch }: Props) => {
                     </div>
                     <h1>Full Time Only</h1>
                   </div>
-                  <button className="py-3 px-12 bg-[#5964E0] w-[249px] text-white rounded-md mt-7">
-                    Search
-                  </button>
+                  <div>
+                    <button className="py-3 px-12 bg-[#5964E0] w-[249px] text-white rounded-md mt-7">
+                      Search
+                    </button>
+                  </div>
                 </div>
               </div>
             ) : null}
