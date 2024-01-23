@@ -15,10 +15,9 @@ const SingleJobs = ({ data }: Props) => {
   return (
     <div className="w-[327px] mx-auto">
       {singleJob.map((job) => {
-        console.log(job);
         return (
-          <>
-            <div key={job.id}>
+          <div key={job.id}>
+            <div>
               <motion.div
                 initial={{ opacity: 0, y: -150 }}
                 animate={{ opacity: 6, y: 0 }}
@@ -75,8 +74,12 @@ const SingleJobs = ({ data }: Props) => {
                   {job.requirements.content}
                 </p>
                 <ul className="flex flex-col gap-y-2 text-DarkGrey leading-7 mb-10">
-                  {job.requirements.items.map((requirement) => {
-                    return <li className="list-disc">{requirement}</li>;
+                  {job.requirements.items.map((requirement, index) => {
+                    return (
+                      <li key={index} className="list-disc">
+                        {requirement}
+                      </li>
+                    );
                   })}
                 </ul>
                 <h1 className="text-VeryDarkBlue text-xl font-bold mb-7">
@@ -86,8 +89,12 @@ const SingleJobs = ({ data }: Props) => {
                   {job.role.content}
                 </p>
                 <ul className="flex flex-col gap-y-2 text-DarkGrey leading-7 mb-10">
-                  {job.role.items.map((role) => {
-                    return <li className="list-decimal">{role}</li>;
+                  {job.role.items.map((role, index) => {
+                    return (
+                      <li key={index} className="list-decimal">
+                        {role}
+                      </li>
+                    );
                   })}
                 </ul>
               </div>
@@ -98,7 +105,7 @@ const SingleJobs = ({ data }: Props) => {
                 <a href={`${job.company}.com`}>Apply Now</a>
               </button>
             </div>
-          </>
+          </div>
         );
       })}
     </div>
