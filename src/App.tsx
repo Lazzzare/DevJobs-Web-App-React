@@ -13,6 +13,7 @@ const App = () => {
   const [darkMode, setDarkMode] = useState<boolean>(false);
   const [data, setData] = useState<(typeof dataType)[]>([]);
   const [search, setSearch] = useState<string>("");
+  const [filteredData, setFilteredData] = useState<(typeof dataType)[]>([]);
   const [location, setLocation] = useState<string>("");
   // const [fullTimeCheck, setFullTimeCheck] = useState<string>("Full Time");
 
@@ -21,6 +22,7 @@ const App = () => {
       try {
         const response = await axios.get(baseUrl);
         setData(response.data);
+        setFilteredData(response.data);
       } catch (error) {
         console.error("Error fetching data: ", error);
       }
@@ -31,21 +33,34 @@ const App = () => {
 
   // SearchJob Input Logic
   const searchJob = () => {
+    const searchTerm = search.trim().toLowerCase();
+
+    if (searchTerm === "") {
+      setFilteredData(data);
+      return data;
+    }
+
     const results = data.filter((item) => {
-      return item.position.toLowerCase().includes(search.toLowerCase());
+      return item.position.toLowerCase().includes(searchTerm);
     });
 
-    console.log(results);
+    setFilteredData(results);
     return results;
   };
 
-  // SearchWithLocation
   const locationSearch = () => {
+    const locationTerm = location.trim().toLowerCase();
+
+    if (locationTerm === "") {
+      setFilteredData(data);
+      return data;
+    }
+
     const locationResults = data.filter((item) => {
-      return item.location.toLowerCase().includes(location.toLowerCase());
+      return item.location.toLowerCase().includes(locationTerm);
     });
 
-    console.log(locationResults);
+    setFilteredData(locationResults);
     return locationResults;
   };
 
@@ -71,8 +86,13 @@ const App = () => {
                 locationSearch={locationSearch}
                 location={location}
                 setLocation={setLocation}
+                setFilteredData={setFilteredData}
               />
-              <Jobs data={data} darkMode={darkMode} />
+              <Jobs
+                // data={data}
+                darkMode={darkMode}
+                filteredData={filteredData}
+              />
             </>
           }
         />
