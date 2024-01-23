@@ -12,10 +12,11 @@ interface Props {
   search: string;
   setSearch: (e: string) => void;
   data: (typeof dataType)[];
-  searchJob: (e: string) => void;
-  locationSearch: (e: string) => void;
+  searchJob: (e: string) => (typeof dataType)[];
+  locationSearch: (e: string) => (typeof dataType)[];
   location: string;
   setLocation: (e: string) => void;
+  setFilteredData: (data: (typeof dataType)[]) => void;
 }
 
 const Input = ({
@@ -26,6 +27,7 @@ const Input = ({
   location,
   setLocation,
   locationSearch,
+  setFilteredData,
 }: Props) => {
   const [fullTimeCheck, setFullTimeCheck] = useState<boolean>(false);
   const [popUp, setPopUp] = useState<boolean>(false);
@@ -112,7 +114,13 @@ const Input = ({
                 </div>
                 <button
                   onClick={() => {
-                    locationSearch(location), searchJob(search);
+                    const searchResults = searchJob(search);
+                    const locationResults = locationSearch(location);
+                    setFilteredData(
+                      searchResults.filter((job) =>
+                        locationResults.includes(job)
+                      )
+                    );
                   }}
                   className="py-3 px-[14px] bg-[#5964E0] ml-5 rounded-md text-white"
                 >
