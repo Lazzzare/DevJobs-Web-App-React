@@ -32,6 +32,19 @@ const Input = ({
   const [fullTimeCheck, setFullTimeCheck] = useState<boolean>(false);
   const [popUp, setPopUp] = useState<boolean>(false);
 
+  const handleSearchClick = () => {
+    const searchResults = searchJob(search);
+    const locationResults = locationSearch(location);
+
+    const fullTimeResults = fullTimeCheck
+      ? searchResults.filter((job) => job.contract === "Full Time")
+      : searchResults;
+
+    setFilteredData(
+      fullTimeResults.filter((job) => locationResults.includes(job))
+    );
+  };
+
   return (
     <motion.div
       initial={{ opacity: 0, y: -100 }}
@@ -113,15 +126,7 @@ const Input = ({
                   </h3>
                 </div>
                 <button
-                  onClick={() => {
-                    const searchResults = searchJob(search);
-                    const locationResults = locationSearch(location);
-                    setFilteredData(
-                      searchResults.filter((job) =>
-                        locationResults.includes(job)
-                      )
-                    );
-                  }}
+                  onClick={handleSearchClick}
                   className="py-3 px-[14px] bg-[#5964E0] ml-5 rounded-md text-white"
                 >
                   Search
@@ -138,8 +143,12 @@ const Input = ({
             />
             {/* PopUp */}
             {popUp ? (
-              <div className="w-full h-screen absolute top-0 right-0 flex justify-center mx-auto items-center text-center bg-[rgb(0,0,0,0.47)]">
-                <div className="p-6 bg-white relative">
+              <div className="z-10 w-full h-screen absolute top-0 right-0 flex justify-center mx-auto items-center text-center bg-[rgb(0,0,0,0.47)]">
+                <div
+                  className={`p-6 pt-8 rounded-md ${
+                    darkMode ? "bg-[#19202D]" : "bg-white"
+                  } relative`}
+                >
                   <span
                     onClick={() => setPopUp(false)}
                     className="absolute top-1 right-4 cursor-pointer font-bold text-red-400 text-lg"
@@ -149,9 +158,13 @@ const Input = ({
                   <div className="flex flex-row items-center gap-4 mb-6">
                     <img src={LocationIcon} alt="LocationIcon" />
                     <input
+                      value={location}
+                      onChange={(e) => setLocation(e.target.value)}
                       type="text"
                       placeholder="Filter by location…"
-                      className={`focus:outline-none`}
+                      className={`focus:outline-none ${
+                        darkMode ? "bg-[#19202D]" : "bg-white"
+                      }`}
                     />
                   </div>
                   <hr />
@@ -180,10 +193,27 @@ const Input = ({
                         </svg>
                       ) : null}
                     </div>
-                    <h1>Full Time Only</h1>
+                    <h1
+                      className={`${
+                        darkMode ? "text-white" : "text-[#19202D]"
+                      }`}
+                    >
+                      Full Time Only
+                    </h1>
                   </div>
                   <div>
-                    <button className="py-3 px-12 bg-[#5964E0] w-[249px] text-white rounded-md mt-7">
+                    <button
+                      onClick={() => {
+                        const searchResults = searchJob(search);
+                        const locationResults = locationSearch(location);
+                        setFilteredData(
+                          searchResults.filter((job) =>
+                            locationResults.includes(job)
+                          )
+                        );
+                      }}
+                      className="py-3 px-12 bg-[#5964E0] w-[249px] text-white rounded-md mt-7"
+                    >
                       Search
                     </button>
                   </div>
