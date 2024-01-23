@@ -2,15 +2,15 @@ import dataType from "./../components/dataTypes";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
-interface Props {
-  data: (typeof dataType)[];
+interface JobsProps {
+  filteredData: (typeof dataType)[];
   darkMode: boolean;
 }
 
-const Jobs = ({ data, darkMode }: Props) => {
+const Jobs = ({ filteredData, darkMode }: JobsProps) => {
   return (
     <div className="mt-14 mx-auto grid-flow-row max-w-[327px] md:max-w-[689px] lg:max-w-[1110px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      {data.map((job) => {
+      {filteredData.map((job) => {
         return (
           <motion.div
             initial={{ opacity: 0, y: 150 }}
