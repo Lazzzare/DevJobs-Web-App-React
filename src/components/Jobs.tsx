@@ -22,7 +22,9 @@ const Jobs = ({ filteredData, darkMode }: JobsProps) => {
               <div
                 className={`relative pt-12 pb-9 px-8 max-w-[327px] md:max-w-[339px] lg:max-w-[350px] mb-10 ${
                   darkMode ? "bg-VeryDarkBlue" : "bg-white"
-                } duration-1000 transition-all hover:scale-105 hover:bg-slate-200`}
+                } duration-1000 transition-all hover:scale-105 ${
+                  darkMode ? "hover:bg-gray-700" : "hover:bg-slate-200"
+                }`}
               >
                 <img
                   src={job.logo}
