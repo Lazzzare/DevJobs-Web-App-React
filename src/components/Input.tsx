@@ -220,7 +220,17 @@ const Input = ({
                 </div>
               </div>
             ) : null}
-            <img src={SearchIcon} alt="SearchIcon" />
+            <img
+              onClick={() => {
+                const searchResults = searchJob(search);
+                const locationResults = locationSearch(location);
+                setFilteredData(
+                  searchResults.filter((job) => locationResults.includes(job))
+                );
+              }}
+              src={SearchIcon}
+              alt="SearchIcon"
+            />
           </div>
         </div>
       </div>
