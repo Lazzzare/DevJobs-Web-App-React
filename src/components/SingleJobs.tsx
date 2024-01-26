@@ -23,7 +23,6 @@ const SingleJobs = ({ data, darkMode }: Props) => {
               initial={{ opacity: 0, y: -150 }}
               animate={{ opacity: 6, y: 0 }}
               transition={{ duration: 1 }}
-              key={job.id}
             >
               <div
                 className={`${
@@ -127,7 +126,7 @@ const SingleJobs = ({ data, darkMode }: Props) => {
               </div>
             </motion.div>
 
-            <div className="mt-4 p-6 ">
+            <div className="mt-4 p-6">
               <button className="py-4 w-full bg-Blue text-white font-bold text-center items-center rounded-md hover:opacity-80 duration-500">
                 <a href={``}>Apply Now</a>
               </button>
