@@ -1,6 +1,6 @@
 # Rest-Countries-API
 
-  <img src="./src/assets/Background.PNG">
+  <img src="./src/assets/background.PNG">
 
 # About
 
