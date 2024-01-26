@@ -24,8 +24,6 @@ Light/Dark mode for a personalized touch
 Detailed job information for each listing
 Engaging animations with Framer Motion
 
-👉 Check it out: [dev-jobs-web-app-react.vercel.app](dev-jobs-web-app-react.vercel.app)
-
 # Getting Started
 
 ![.gif](./src/assets/gif.webp);
