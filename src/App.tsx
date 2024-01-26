@@ -8,7 +8,7 @@ import { Route, Routes } from "react-router-dom";
 import SingleJobs from "./components/SingleJobs";
 import LoadMore from "./components/LoadMore";
 
-const baseUrl = "./../data/data.json";
+const baseUrl = "./data.json";
 
 const App = () => {
   const [darkMode, setDarkMode] = useState<boolean>(false);
