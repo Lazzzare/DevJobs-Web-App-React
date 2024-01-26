@@ -6,6 +6,7 @@ import dataType from "./components/dataTypes";
 import Jobs from "./components/Jobs";
 import { Route, Routes } from "react-router-dom";
 import SingleJobs from "./components/SingleJobs";
+import LoadMore from "./components/LoadMore";
 
 const baseUrl = "./../data/data.json";
 
@@ -99,6 +100,7 @@ const App = () => {
                 darkMode={darkMode}
                 filteredData={filteredData}
               />
+              <LoadMore handleLoadMore={handleLoadMore} />
             </>
           }
         />
@@ -107,14 +109,6 @@ const App = () => {
           element={<SingleJobs data={data} darkMode={darkMode} />}
         />
       </Routes>
-      <div className="pb-[104px]">
-        <button
-          onClick={handleLoadMore}
-          className="py-2 px-4 bg-[#5964E0] text-white rounded-md flex mx-auto hover:opacity-80 hover:scale-125 duration-500"
-        >
-          Load More
-        </button>
-      </div>
     </div>
   );
 };
