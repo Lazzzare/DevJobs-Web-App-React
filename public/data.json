@@ -2,7 +2,7 @@
   {
     "id": 1,
     "company": "Scoot",
-    "logo": "/assets/logos/scoot.svg",
+    "logo": "/src/assets/logos/scoot.svg",
     "logoBackground": "hsl(36, 87%, 49%)",
     "position": "Senior Software Engineer",
     "postedAt": "5h ago",
